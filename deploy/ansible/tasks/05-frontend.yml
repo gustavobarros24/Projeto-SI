@@ -1,0 +1,19 @@
+---
+- name: Install frontend dependencies
+  npm:
+    path: "{{ repo_dest }}/medai-frontend"
+    state: present
+  become_user: "{{ app_user }}"
+
+- name: Remove old build artifacts
+  file:
+    path: "{{ repo_dest }}/medai-frontend/dist"
+    state: absent
+
+- name: Build frontend for production
+  command: npm run build
+  args:
+    chdir: "{{ repo_dest }}/medai-frontend"
+  become_user: "{{ app_user }}"
+  register: npm_build
+  changed_when: "'built in' in npm_build.stdout"

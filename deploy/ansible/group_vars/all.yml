@@ -1,0 +1,32 @@
+---
+# Utilizador dentro do container
+app_user: g2p4
+app_home: /mounts/g2p4
+
+# Repositório
+repo_url: git@github.com:EnzoVieira/proj-si-medai.git
+repo_dest: "{{ app_home }}/proj-si-medai"
+
+# Python
+python_version: "3.12"
+
+# Backend
+backend_port: 8008
+
+# Frontend
+frontend_public_port: 80
+
+# LLMs (portas do llama.cpp local)
+medical_llm_port: 8080
+chat_llm_port: 8081
+medical_model: unsloth/medgemma-27b-it-GGUF:Q8_0
+chat_model: unsloth/gemma-4-E2B-it-GGUF:F32
+
+# Base de dados
+db_name: medai
+db_user: postgres
+db_password: postgres
+
+# Segurança
+jwt_secret: "MUDA-ISTO-PARA-UM-VALOR-ALEATORIO"
+cors_origins: "*"

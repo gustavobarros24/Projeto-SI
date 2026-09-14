@@ -1,0 +1,287 @@
+{
+  "common": {
+    "app_name": "MedAI",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving...",
+    "loading": "Loading...",
+    "error_unknown": "Unknown error",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign in to continue.",
+      "submit": "Sign in",
+      "submitting": "Signing in...",
+      "no_account": "Don't have an account?",
+      "signup_link": "Create account",
+      "error_default": "Error signing in"
+    },
+    "signup": {
+      "title": "Create an account to get started.",
+      "submit": "Create account",
+      "submitting": "Creating...",
+      "has_account": "Already have an account?",
+      "login_link": "Sign in",
+      "error_default": "Error creating account"
+    },
+    "validation": {
+      "name_required": "Name is required.",
+      "email_invalid": "Invalid email.",
+      "password_min": "Password must be at least 6 characters.",
+      "password_required": "Password is required."
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "email@example.com",
+      "password": "••••••••"
+    }
+  },
+  "sidebar": {
+    "new_session": "New session",
+    "documents": "Documents",
+    "sessions": "Sessions",
+    "no_sessions": "No sessions yet.",
+    "logout": "Log out",
+    "anamnesis_level": "Anamnesis — Level {{level}}",
+    "radiology_level": "Radiology — Level {{level}}",
+    "xp_to_next": "{{xp}} / {{next}} XP",
+    "max_level": "Max level reached",
+    "view": "View",
+    "rename": "Rename",
+    "delete": "Delete",
+    "rename_dialog": {
+      "title": "Rename session",
+      "description": "Choose a name for this session.",
+      "label": "Name",
+      "error_default": "Error renaming"
+    },
+    "validation": {
+      "name_required": "Name is required.",
+      "name_max": "maximum 255 characters."
+    }
+  },
+  "chat": {
+    "input": {
+      "placeholder_message": "Type your message...",
+      "placeholder_diagnosis": "Enter your diagnosis...",
+      "attachment_soon": "Coming soon...",
+      "record": "Record voice message",
+      "recording": "Recording… tap to stop",
+      "transcribing": "Transcribing…",
+      "mic_permission_denied": "Microphone access was denied.",
+      "mic_error": "Could not capture audio. Please try again.",
+      "await_case": "Waiting for case presentation...",
+      "cancel_diagnosis": "Cancel diagnosis",
+      "submit_diagnosis": "Submit diagnosis",
+      "give_up": "Give up",
+      "view_report": "View Report",
+      "give_up_dialog": {
+        "title": "Give up diagnosis?",
+        "description": "You will lose your remaining attempts and the correct diagnosis will be revealed."
+      }
+    },
+    "session_ended": "Session ended.",
+    "view_report": "View Report",
+    "final_report_title": "Final Report",
+    "xray_alt": "X-Ray",
+    "error_unknown": "Unknown error"
+  },
+  "message": {
+    "labels": {
+      "patient": "Patient",
+      "tutor": "Tutor",
+      "presentation": "Case presentation",
+      "responder": "Analysis",
+      "diagnosis": "Diagnosis"
+    },
+    "avatars": {
+      "human": "You"
+    },
+    "sources": "Sources"
+  },
+  "models": {
+    "unavailable": "Models unavailable",
+    "online": "Models online",
+    "checking": "Checking...",
+    "status_aria": "Models status: {{status}}"
+  },
+  "progress": {
+    "title": "Progress",
+    "start_session": "Start a session to view your progress",
+    "anamnesis": {
+      "symptoms_revealed": "Revealed symptoms",
+      "questions_asked": "Questions asked",
+      "consecutive_irrelevant": "Consecutive irrelevant questions",
+      "turn": "Turn"
+    },
+    "radiology": {
+      "correct_findings": "Correct findings",
+      "incorrect_findings": "Incorrect findings",
+      "consecutive_errors": "Consecutive errors",
+      "turn": "Turn"
+    }
+  },
+  "images": {
+    "no_image": "No image available.",
+    "xray_alt": "X-Ray",
+    "tab": "Images"
+  },
+  "report": {
+    "grades": {
+      "A": "Excellent",
+      "B": "Good",
+      "C": "Satisfactory",
+      "D": "Sufficient",
+      "F": "Insufficient"
+    },
+    "points": "points",
+    "correct_diagnosis": "Correct diagnosis",
+    "symptoms": "Symptoms",
+    "correct_impression": "Correct impression",
+    "findings": "Findings",
+    "incorrect_findings": "Incorrect findings",
+    "strengths": "Strengths",
+    "improvements": "Areas for improvement",
+    "tutor_feedback": "Tutor feedback"
+  },
+  "new_chat": {
+    "choose_module": "Choose a module to get started:",
+    "anamnesis": {
+      "title": "Anamnesis Module",
+      "description": "Simulate a medical consultation focused on anamnesis, where you can practise your interview and diagnosis skills.",
+      "select": "Select",
+      "start_message": "I want to learn anamnesis."
+    },
+    "radiology": {
+      "title": "Radiology Module",
+      "description": "Analyse radiological images and practise your interpretation with interactive simulations.",
+      "select": "Select",
+      "start_message": "I want to practise radiology."
+    }
+  },
+  "radiology_modal": {
+    "title": "Choose a case:",
+    "description": "Pick one of the published radiological cases to start practising.",
+    "untitled": "(untitled case)",
+    "empty": "No cases available yet — ask your teacher to publish one.",
+    "confirm": "Start session",
+    "required_level": "Level {{level}}",
+    "locked": "Reach level {{level}} to unlock"
+  },
+  "anamnesis_modal": {
+    "title": "Choose a case:",
+    "description": "Pick one of the published cases to start the interview.",
+    "untitled": "(untitled case)",
+    "empty": "No cases available yet — ask your teacher to publish one.",
+    "confirm": "Start session",
+    "required_level": "Level {{level}}",
+    "locked": "Reach level {{level}} to unlock"
+  },
+  "stat_card": {
+    "toggle_details": "Toggle details"
+  },
+  "teacher": {
+    "tabs": {
+      "rag": "RAG documents",
+      "cases": "Anamnesis cases",
+      "radiology_cases": "Radiology cases"
+    },
+    "documents": {
+      "title": "Course documents",
+      "description": "Documents uploaded here are indexed and used to ground tutor and evaluator responses.",
+      "upload": "Upload a document",
+      "accepted": "Accepted formats: PDF, DOCX, TXT, MD (max 20 MB).",
+      "uploading": "Uploading and indexing…",
+      "list": "Indexed documents",
+      "empty": "No documents yet.",
+      "delete_aria": "Delete document"
+    },
+    "anamnesis_cases": {
+      "upload": "Upload a real case",
+      "accepted": "Upload a clinical case (PDF, DOCX, TXT or MD, max 20 MB). The model will extract patient persona, diagnosis, symptoms and emotional state for you to review.",
+      "extracting": "Extracting clinical fields…",
+      "list": "Available cases",
+      "empty": "No anamnesis cases yet.",
+      "untitled": "(untitled case)",
+      "status_draft": "Draft",
+      "status_published": "Published",
+      "edit_aria": "Edit case",
+      "delete_aria": "Delete case",
+      "editor": {
+        "title": "Review case",
+        "description": "Review and complete the extracted fields. The title and description are shown to students; the diagnosis and symptoms must NOT appear in them.",
+        "section_student": "Student-facing label",
+        "section_student_hint": "What the student sees in the selection modal. Keep it neutral — do not mention the diagnosis.",
+        "field_level": "Level (1–5)",
+        "field_level_hint": "Students below this level can't pick the case.",
+        "section_patient": "Patient",
+        "section_clinical": "Clinical (hidden from the student)",
+        "field_title": "Title",
+        "field_description": "Short description (max 2 lines)",
+        "field_name": "Name",
+        "field_age": "Age",
+        "field_gender": "Gender",
+        "field_emotional": "Emotional state",
+        "field_diagnosis": "Hidden diagnosis",
+        "field_symptoms": "Symptoms (one per line)",
+        "placeholder_title": "e.g. Adult male with acute chest pain",
+        "placeholder_description": "Two lines describing the scenario without giving away the diagnosis.",
+        "placeholder_symptoms": "chest pain\nshortness of breath\nnausea",
+        "symptoms_hint": "Each line becomes one symptom in the simulation.",
+        "save_draft": "Save as draft",
+        "publish": "Publish",
+        "saving": "Saving…",
+        "publishing": "Publishing…",
+        "re_extract": "Re-extract from file",
+        "re_extracting": "Re-extracting…",
+        "errors": {
+          "title_required": "Title is required to publish.",
+          "description_required": "Description is required to publish.",
+          "diagnosis_required": "Hidden diagnosis is required to publish.",
+          "symptoms_required": "At least one symptom is required to publish."
+        }
+      }
+    },
+    "radiology_cases": {
+      "upload": "Upload a radiological image",
+      "accepted": "Upload a radiological image (PNG or JPEG, max 20 MB). The model will analyse it and extract the findings and impression for you to review.",
+      "extracting": "Analysing the image…",
+      "list": "Available cases",
+      "empty": "No radiology cases yet.",
+      "untitled": "(untitled case)",
+      "status_draft": "Draft",
+      "status_published": "Published",
+      "edit_aria": "Edit case",
+      "delete_aria": "Delete case",
+      "editor": {
+        "title": "Review case",
+        "description": "Review and complete the extracted fields. The title and level are shown to students; the findings and impression must NOT reveal the diagnosis to them.",
+        "section_student": "Student-facing label",
+        "field_title": "Title",
+        "field_level": "Level (1–5)",
+        "field_level_hint": "Students below this level can't pick the case.",
+        "section_clinical": "Clinical (hidden from the student)",
+        "field_findings": "Findings (one per line)",
+        "field_findings_hint": "Each line becomes one expected finding in the simulation.",
+        "field_impression": "Radiological impression",
+        "placeholder_title": "e.g. Chest X-ray with right basal opacity",
+        "placeholder_findings": "right basal opacity\nblunting of the costophrenic angle\nno pneumothorax",
+        "placeholder_impression": "Findings compatible with right basal consolidation.",
+        "save_draft": "Save as draft",
+        "publish": "Publish",
+        "saving": "Saving…",
+        "publishing": "Publishing…",
+        "re_extract": "Re-extract from image",
+        "re_extracting": "Re-extracting…",
+        "errors": {
+          "title_required": "Title is required to publish.",
+          "findings_required": "At least one finding is required to publish.",
+          "impression_required": "Impression is required to publish."
+        }
+      }
+    }
+  }
+}

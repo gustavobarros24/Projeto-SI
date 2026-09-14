@@ -1,0 +1,287 @@
+{
+  "common": {
+    "app_name": "MedAI",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "saving": "A guardar...",
+    "loading": "A carregar...",
+    "error_unknown": "Erro desconhecido",
+    "name": "Nome",
+    "email": "Email",
+    "password": "Palavra-passe"
+  },
+  "auth": {
+    "login": {
+      "title": "Inicia sessão para continuar.",
+      "submit": "Entrar",
+      "submitting": "A entrar...",
+      "no_account": "Não tens conta?",
+      "signup_link": "Criar conta",
+      "error_default": "Erro ao fazer login"
+    },
+    "signup": {
+      "title": "Cria uma conta para começar.",
+      "submit": "Criar conta",
+      "submitting": "A criar...",
+      "has_account": "Já tens conta?",
+      "login_link": "Iniciar sessão",
+      "error_default": "Erro ao criar conta"
+    },
+    "validation": {
+      "name_required": "O nome é obrigatório.",
+      "email_invalid": "Email inválido.",
+      "password_min": "A palavra-passe deve ter pelo menos 6 caracteres.",
+      "password_required": "A palavra-passe é obrigatória."
+    },
+    "placeholders": {
+      "name": "O teu nome",
+      "email": "email@exemplo.com",
+      "password": "••••••••"
+    }
+  },
+  "sidebar": {
+    "new_session": "Nova sessão",
+    "documents": "Documentos",
+    "sessions": "Sessões",
+    "no_sessions": "Nenhuma sessão ainda.",
+    "logout": "Log out",
+    "anamnesis_level": "Anamnese — Nível {{level}}",
+    "radiology_level": "Radiologia — Nível {{level}}",
+    "xp_to_next": "{{xp}} / {{next}} XP",
+    "max_level": "Nível máximo atingido",
+    "view": "Ver",
+    "rename": "Renomear",
+    "delete": "Apagar",
+    "rename_dialog": {
+      "title": "Renomear sessão",
+      "description": "Escolhe um nome para esta sessão.",
+      "label": "Nome",
+      "error_default": "Erro ao renomear"
+    },
+    "validation": {
+      "name_required": "Nome obrigatório.",
+      "name_max": "máximo 255 caracteres."
+    }
+  },
+  "chat": {
+    "input": {
+      "placeholder_message": "Escreve a tua mensagem...",
+      "placeholder_diagnosis": "Insere o teu diagnóstico...",
+      "attachment_soon": "Brevemente...",
+      "record": "Gravar mensagem de voz",
+      "recording": "A gravar… toca para parar",
+      "transcribing": "A transcrever…",
+      "mic_permission_denied": "O acesso ao microfone foi negado.",
+      "mic_error": "Não foi possível captar o áudio. Tenta novamente.",
+      "await_case": "Aguarda a apresentação do caso...",
+      "cancel_diagnosis": "Cancelar diagnóstico",
+      "submit_diagnosis": "Submeter diagnóstico",
+      "give_up": "Desistir",
+      "view_report": "Ver Relatório",
+      "give_up_dialog": {
+        "title": "Desistir do diagnóstico?",
+        "description": "Vais perder as tentativas restantes e será revelado o diagnóstico correto."
+      }
+    },
+    "session_ended": "A sessão terminou.",
+    "view_report": "Ver Relatório",
+    "final_report_title": "Relatório Final",
+    "xray_alt": "Raio-X",
+    "error_unknown": "Erro desconhecido"
+  },
+  "message": {
+    "labels": {
+      "patient": "Paciente",
+      "tutor": "Tutor",
+      "presentation": "Apresentação do caso",
+      "responder": "Análise",
+      "diagnosis": "Diagnóstico"
+    },
+    "avatars": {
+      "human": "Tu"
+    },
+    "sources": "Fontes"
+  },
+  "models": {
+    "unavailable": "Modelos indisponíveis",
+    "online": "Modelos online",
+    "checking": "A verificar...",
+    "status_aria": "Estado dos modelos: {{status}}"
+  },
+  "progress": {
+    "title": "Progresso",
+    "start_session": "Inicia uma sessão para ver o teu progresso",
+    "anamnesis": {
+      "symptoms_revealed": "Sintomas revelados",
+      "questions_asked": "Perguntas feitas",
+      "consecutive_irrelevant": "Perguntas irrelevantes consecutivas",
+      "turn": "Turno"
+    },
+    "radiology": {
+      "correct_findings": "Achados corretos",
+      "incorrect_findings": "Achados incorretos",
+      "consecutive_errors": "Erros consecutivos",
+      "turn": "Turno"
+    }
+  },
+  "images": {
+    "no_image": "Nenhuma imagem disponível.",
+    "xray_alt": "Raio-X",
+    "tab": "Imagens"
+  },
+  "report": {
+    "grades": {
+      "A": "Excelente",
+      "B": "Bom",
+      "C": "Satisfatório",
+      "D": "Suficiente",
+      "F": "Insuficiente"
+    },
+    "points": "pontos",
+    "correct_diagnosis": "Diagnóstico correto",
+    "symptoms": "Sintomas",
+    "correct_impression": "Impressão correta",
+    "findings": "Achados",
+    "incorrect_findings": "Achados incorretos",
+    "strengths": "Pontos fortes",
+    "improvements": "A melhorar...",
+    "tutor_feedback": "Feedback do tutor"
+  },
+  "new_chat": {
+    "choose_module": "Escolhe um módulo para começar:",
+    "anamnesis": {
+      "title": "Módulo Anamnese",
+      "description": "Simula uma consulta médica focada na anamnese, onde podes praticar as tuas competências de entrevista e diagnóstico.",
+      "select": "Selecionar",
+      "start_message": "Quero aprender anamnese."
+    },
+    "radiology": {
+      "title": "Módulo Radiologia",
+      "description": "Analisa imagens radiológicas e pratica a tua interpretação com simulações interativas.",
+      "select": "Selecionar",
+      "start_message": "Quero praticar radiologia."
+    }
+  },
+  "radiology_modal": {
+    "title": "Escolhe um caso:",
+    "description": "Seleciona um dos casos radiológicos publicados para iniciar a prática.",
+    "untitled": "(caso sem título)",
+    "empty": "Ainda não há casos disponíveis — pede ao teu professor para publicar um.",
+    "confirm": "Iniciar sessão",
+    "required_level": "Nível {{level}}",
+    "locked": "Atinge o nível {{level}} para desbloquear"
+  },
+  "anamnesis_modal": {
+    "title": "Escolhe um caso:",
+    "description": "Seleciona um dos casos publicados para iniciar a entrevista.",
+    "untitled": "(caso sem título)",
+    "empty": "Ainda não há casos disponíveis — pede ao teu professor para publicar um.",
+    "confirm": "Iniciar sessão",
+    "required_level": "Nível {{level}}",
+    "locked": "Atinge o nível {{level}} para desbloquear"
+  },
+  "stat_card": {
+    "toggle_details": "Alternar detalhes"
+  },
+  "teacher": {
+    "tabs": {
+      "rag": "Documentos RAG",
+      "cases": "Casos de anamnese",
+      "radiology_cases": "Casos de radiologia"
+    },
+    "documents": {
+      "title": "Documentos do curso",
+      "description": "Os documentos carregados aqui são indexados e usados para fundamentar respostas do tutor e do avaliador.",
+      "upload": "Carregar um documento",
+      "accepted": "Formatos aceites: PDF, DOCX, TXT, MD (máx. 20 MB).",
+      "uploading": "A carregar e indexar…",
+      "list": "Documentos indexados",
+      "empty": "Ainda não há documentos.",
+      "delete_aria": "Apagar documento"
+    },
+    "anamnesis_cases": {
+      "upload": "Carregar um caso real",
+      "accepted": "Carrega um caso clínico (PDF, DOCX, TXT ou MD, máx. 20 MB). O modelo vai extrair a persona do paciente, o diagnóstico, os sintomas e o estado emocional para reveres.",
+      "extracting": "A extrair os campos clínicos…",
+      "list": "Casos disponíveis",
+      "empty": "Ainda não há casos de anamnese.",
+      "untitled": "(caso sem título)",
+      "status_draft": "Rascunho",
+      "status_published": "Publicado",
+      "edit_aria": "Editar caso",
+      "delete_aria": "Apagar caso",
+      "editor": {
+        "title": "Rever caso",
+        "description": "Revê e completa os campos extraídos. O título e a descrição são mostrados aos alunos; o diagnóstico e os sintomas NÃO podem aparecer aí.",
+        "section_student": "Identificação visível ao aluno",
+        "section_student_hint": "O que o aluno vê no modal de selecção. Mantém neutro — não menciones o diagnóstico.",
+        "field_level": "Nível (1–5)",
+        "field_level_hint": "Alunos de nível inferior não podem escolher o caso.",
+        "section_patient": "Paciente",
+        "section_clinical": "Clínico (escondido do aluno)",
+        "field_title": "Título",
+        "field_description": "Descrição curta (máx. 2 linhas)",
+        "field_name": "Nome",
+        "field_age": "Idade",
+        "field_gender": "Género",
+        "field_emotional": "Estado emocional",
+        "field_diagnosis": "Diagnóstico oculto",
+        "field_symptoms": "Sintomas (um por linha)",
+        "placeholder_title": "ex.: Homem adulto com dor torácica aguda",
+        "placeholder_description": "Duas linhas a descrever o cenário sem revelar o diagnóstico.",
+        "placeholder_symptoms": "dor torácica\nfalta de ar\nnáuseas",
+        "symptoms_hint": "Cada linha vai tornar-se um sintoma na simulação.",
+        "save_draft": "Guardar como rascunho",
+        "publish": "Publicar",
+        "saving": "A guardar…",
+        "publishing": "A publicar…",
+        "re_extract": "Re-extrair do ficheiro",
+        "re_extracting": "A re-extrair…",
+        "errors": {
+          "title_required": "O título é obrigatório para publicar.",
+          "description_required": "A descrição é obrigatória para publicar.",
+          "diagnosis_required": "O diagnóstico oculto é obrigatório para publicar.",
+          "symptoms_required": "É necessário pelo menos um sintoma para publicar."
+        }
+      }
+    },
+    "radiology_cases": {
+      "upload": "Carregar uma imagem radiológica",
+      "accepted": "Carrega uma imagem radiológica (PNG ou JPEG, máx. 20 MB). O modelo vai analisá-la e extrair os achados e a impressão para reveres.",
+      "extracting": "A analisar a imagem…",
+      "list": "Casos disponíveis",
+      "empty": "Ainda não há casos de radiologia.",
+      "untitled": "(caso sem título)",
+      "status_draft": "Rascunho",
+      "status_published": "Publicado",
+      "edit_aria": "Editar caso",
+      "delete_aria": "Apagar caso",
+      "editor": {
+        "title": "Rever caso",
+        "description": "Revê e completa os campos extraídos. O título e o nível são mostrados aos alunos; os achados e a impressão NÃO podem revelar-lhes o diagnóstico.",
+        "section_student": "Identificação visível ao aluno",
+        "field_title": "Título",
+        "field_level": "Nível (1–5)",
+        "field_level_hint": "Alunos de nível inferior não podem escolher o caso.",
+        "section_clinical": "Clínico (escondido do aluno)",
+        "field_findings": "Achados (um por linha)",
+        "field_findings_hint": "Cada linha vai tornar-se um achado esperado na simulação.",
+        "field_impression": "Impressão radiológica",
+        "placeholder_title": "ex.: Radiografia de tórax com opacidade basal direita",
+        "placeholder_findings": "opacidade basal direita\napagamento do ângulo costofrénico\nsem pneumotórax",
+        "placeholder_impression": "Achados compatíveis com consolidação basal direita.",
+        "save_draft": "Guardar como rascunho",
+        "publish": "Publicar",
+        "saving": "A guardar…",
+        "publishing": "A publicar…",
+        "re_extract": "Re-extrair da imagem",
+        "re_extracting": "A re-extrair…",
+        "errors": {
+          "title_required": "O título é obrigatório para publicar.",
+          "findings_required": "É necessário pelo menos um achado para publicar.",
+          "impression_required": "A impressão é obrigatória para publicar."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+name: medai-deploy
+
+services:
+  ansible:
+    image: alpine/ansible:latest
+    container_name: medai-ansible
+    volumes:
+      - ./ansible:/apps
+      - ~/.ssh:/root/.ssh:ro
+    working_dir: /apps
+    stdin_open: true
+    tty: true
+    entrypoint: /bin/sh

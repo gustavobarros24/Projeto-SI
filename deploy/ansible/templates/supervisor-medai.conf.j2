@@ -1,0 +1,18 @@
+[program:postgresql]
+command=/usr/bin/pg_ctlcluster 16 main start --foreground
+user=postgres
+autorestart=true
+priority=10
+
+[program:backend]
+command={{ repo_dest }}/backend/venv/bin/fastapi run main.py --port {{ backend_port }}
+directory={{ repo_dest }}/backend
+user={{ app_user }}
+environment=HOME="{{ app_home }}",PGSSLMODE="disable"
+autorestart=true
+priority=20
+
+[program:nginx]
+command=/usr/sbin/nginx -g "daemon off;"
+autorestart=true
+priority=30

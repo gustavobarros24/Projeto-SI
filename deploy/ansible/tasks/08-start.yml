@@ -1,0 +1,49 @@
+---
+- name: Check if supervisord is running
+  shell: pgrep -x supervisord
+  register: supervisord_running
+  changed_when: false
+  failed_when: false
+
+- name: Start supervisord (if not running)
+  command: supervisord -c /etc/supervisor/supervisord.conf
+  when: supervisord_running.rc != 0
+
+- name: Stop any manually-running PostgreSQL cluster
+  command: pg_ctlcluster 16 main stop
+  register: pg_stop
+  changed_when: pg_stop.rc == 0
+  failed_when:
+    - pg_stop.rc != 0
+    - "'not running' not in pg_stop.stderr"
+
+- name: Reload Supervisor configuration
+  command: "{{ item }}"
+  loop:
+    - supervisorctl reread
+    - supervisorctl update
+
+- name: Ensure all services are running
+  command: supervisorctl start {{ item }}
+  loop:
+    - postgresql
+    - backend
+    - nginx
+  register: svc_start
+  changed_when: "'started' in svc_start.stdout"
+  failed_when:
+    - svc_start.rc != 0
+    - "'already started' not in svc_start.stdout"
+
+- name: Wait 5 seconds for services to stabilize
+  pause:
+    seconds: 5
+
+- name: Show services status
+  command: supervisorctl status
+  register: svc_status
+  changed_when: false
+
+- name: Display service status
+  debug:
+    var: svc_status.stdout_lines

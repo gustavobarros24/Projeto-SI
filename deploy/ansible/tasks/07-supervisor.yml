@@ -1,0 +1,41 @@
+---
+- name: Ensure Supervisor directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+  loop:
+    - /etc/supervisor
+    - /etc/supervisor/conf.d
+
+- name: Check if supervisord.conf exists
+  stat:
+    path: /etc/supervisor/supervisord.conf
+  register: supervisord_conf
+
+- name: Generate base supervisord.conf
+  shell: echo_supervisord_conf > /etc/supervisor/supervisord.conf
+  when: not supervisord_conf.stat.exists
+
+- name: Enable include section in supervisord.conf
+  lineinfile:
+    path: /etc/supervisor/supervisord.conf
+    regexp: "^;?\\[include\\]"
+    line: "[include]"
+
+- name: Configure include files path
+  lineinfile:
+    path: /etc/supervisor/supervisord.conf
+    regexp: "^;?files\\s*=.*"
+    line: "files = /etc/supervisor/conf.d/*.conf"
+    insertafter: "^\\[include\\]"
+
+- name: Generate medai Supervisor configuration
+  template:
+    src: supervisor-medai.conf.j2
+    dest: /etc/supervisor/conf.d/medai.conf
+    owner: root
+    group: root
+    mode: '0644'

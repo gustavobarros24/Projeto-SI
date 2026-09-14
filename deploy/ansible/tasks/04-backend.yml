@@ -1,0 +1,27 @@
+---
+- name: Create Python virtual environment
+  command: python{{ python_version }} -m venv {{ repo_dest }}/backend/venv
+  args:
+    creates: "{{ repo_dest }}/backend/venv/bin/python"
+  become_user: "{{ app_user }}"
+
+- name: Upgrade pip in venv
+  pip:
+    name: pip
+    state: latest
+    virtualenv: "{{ repo_dest }}/backend/venv"
+  become_user: "{{ app_user }}"
+
+- name: Install backend dependencies
+  pip:
+    requirements: "{{ repo_dest }}/backend/requirements.txt"
+    virtualenv: "{{ repo_dest }}/backend/venv"
+  become_user: "{{ app_user }}"
+
+- name: Generate backend .env file
+  template:
+    src: env.j2
+    dest: "{{ repo_dest }}/backend/.env"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: '0600'

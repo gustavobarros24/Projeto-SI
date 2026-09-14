@@ -1,0 +1,33 @@
+---
+- name: Check PostgreSQL cluster status
+  command: pg_lsclusters -h
+  register: pg_clusters
+  changed_when: false
+
+- name: Start PostgreSQL cluster (if not running)
+  command: pg_ctlcluster 16 main start
+  when: "'online' not in pg_clusters.stdout"
+  register: pg_start
+  changed_when: pg_start.rc == 0
+  failed_when:
+    - pg_start.rc != 0
+    - "'already running' not in pg_start.stderr"
+
+- name: Install psycopg2 for Ansible postgres modules
+  pip:
+    name: psycopg2-binary
+    executable: pip3.12
+    extra_args: --break-system-packages
+
+- name: Create medai database
+  postgresql_db:
+    name: "{{ db_name }}"
+    state: present
+  become_user: postgres
+
+- name: Set password for postgres user
+  postgresql_user:
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    state: present
+  become_user: postgres

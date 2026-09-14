@@ -1,0 +1,47 @@
+---
+- name: Deploy MedAI Application
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install system packages
+      import_tasks: tasks/01-system.yml
+      tags: [system]
+
+    - name: Configure PostgreSQL
+      import_tasks: tasks/02-postgres.yml
+      tags: [postgres]
+
+    - name: Clone repository
+      import_tasks: tasks/03-code.yml
+      tags: [code]
+
+    - name: Setup backend
+      import_tasks: tasks/04-backend.yml
+      tags: [backend]
+
+    - name: Build frontend
+      import_tasks: tasks/05-frontend.yml
+      tags: [frontend]
+
+    - name: Configure Nginx
+      import_tasks: tasks/06-nginx.yml
+      tags: [nginx]
+
+    - name: Configure Supervisor
+      import_tasks: tasks/07-supervisor.yml
+      tags: [supervisor]
+
+    - name: Start services
+      import_tasks: tasks/08-start.yml
+      tags: [start]
+
+  handlers:
+    - name: reload nginx
+      command: nginx -s reload
+      listen: reload nginx
+
+    - name: restart backend
+      command: supervisorctl restart backend
+      listen: restart backend

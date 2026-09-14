@@ -1,0 +1,84 @@
+---
+- name: Ensure app directory exists
+  file:
+    path: "{{ repo_dest }}"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+
+- name: Ensure .ssh directory exists for app user
+  file:
+    path: "{{ app_home }}/.ssh"
+    state: directory
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: '0700'
+
+- name: Generate deploy key for this container
+  command: ssh-keygen -t ed25519 -f {{ app_home }}/.ssh/github_deploy_key -N "" -C "ansible-deploy-{{ inventory_hostname }}"
+  args:
+    creates: "{{ app_home }}/.ssh/github_deploy_key"
+  become_user: "{{ app_user }}"
+
+- name: Configure SSH to use deploy key for GitHub
+  copy:
+    dest: "{{ app_home }}/.ssh/config"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: '0600'
+    content: |
+      Host github.com
+          HostName github.com
+          User git
+          IdentityFile {{ app_home }}/.ssh/github_deploy_key
+          IdentitiesOnly yes
+
+- name: Add GitHub to known_hosts
+  known_hosts:
+    name: github.com
+    key: "{{ lookup('pipe', 'ssh-keyscan -t ed25519 github.com') }}"
+    path: "{{ app_home }}/.ssh/known_hosts"
+    state: present
+  become_user: "{{ app_user }}"
+
+- name: Read deploy key (public)
+  slurp:
+    src: "{{ app_home }}/.ssh/github_deploy_key.pub"
+  register: deploy_key_pub
+
+- name: Test GitHub authentication
+  command: ssh -T git@github.com
+  become_user: "{{ app_user }}"
+  register: github_auth
+  failed_when: false
+  changed_when: false
+
+- name: Show deploy key and stop if not authorized
+  fail:
+    msg: |
+      
+      ═══════════════════════════════════════════════════════════════
+      DEPLOY KEY NÃO ESTÁ AUTORIZADA NO GITHUB
+      ═══════════════════════════════════════════════════════════════
+      
+      1. Copia a chave pública abaixo:
+      
+      {{ deploy_key_pub.content | b64decode }}
+      
+      2. Vai a: https://github.com/EnzoVieira/proj-si-medai/settings/keys
+      3. Clica em "Add deploy key"
+      4. Cola a chave, dá um nome (ex: "{{ inventory_hostname }}")
+      5. NÃO marques "Allow write access" (read-only é o que queremos)
+      6. Corre o playbook novamente
+      
+      ═══════════════════════════════════════════════════════════════
+  when: "'successfully authenticated' not in github_auth.stderr"
+
+- name: Clone or update repository
+  git:
+    repo: "{{ repo_url }}"
+    dest: "{{ repo_dest }}"
+    accept_hostkey: true
+    update: true
+    version: main
+  become_user: "{{ app_user }}"

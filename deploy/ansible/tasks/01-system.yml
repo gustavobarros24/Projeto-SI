@@ -1,0 +1,77 @@
+---
+- name: Check if Python 3.12 is already installed
+  stat:
+    path: /usr/bin/python3.12
+  register: python312_check
+
+- name: Remove any existing deadsnakes PPA sources (clean slate)
+  shell: |
+    rm -f /etc/apt/sources.list.d/deadsnakes*
+    rm -f /etc/apt/sources.list.d/ppa_deadsnakes*
+  when: not python312_check.stat.exists
+  changed_when: false
+
+- name: Update apt cache
+  apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install required system packages
+  apt:
+    name:
+      - git
+      - curl
+      - nginx
+      - postgresql
+      - postgresql-contrib
+      - software-properties-common
+      - acl
+    state: present
+
+- name: Add deadsnakes PPA for Python 3.12
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+    state: present
+    update_cache: true
+  when: not python312_check.stat.exists
+
+- name: Install Python 3.12
+  apt:
+    name:
+      - python3.12
+      - python3.12-venv
+      - python3.12-dev
+    state: present
+
+- name: Check if pip3.12 is installed
+  stat:
+    path: /usr/local/bin/pip3.12
+  register: pip312_check
+
+- name: Install pip for Python 3.12
+  shell: curl -sS https://bootstrap.pypa.io/get-pip.py | python3.12 - --break-system-packages
+  when: not pip312_check.stat.exists
+
+- name: Install Supervisor system-wide
+  pip:
+    name: supervisor
+    executable: pip3.12
+    extra_args: --break-system-packages
+
+- name: Check if Node.js is installed
+  stat:
+    path: /usr/bin/node
+  register: node_check
+
+- name: Check Node.js version
+  shell: node --version | grep -oP 'v\K\d+'
+  register: node_version
+  when: node_check.stat.exists
+  changed_when: false
+  failed_when: false
+
+- name: Install Node.js 20 (NodeSource)
+  shell: |
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    apt-get install -y nodejs
+  when: not node_check.stat.exists or (node_version.stdout | default('0') | int) < 20
